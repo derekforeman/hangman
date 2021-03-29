@@ -1,7 +1,7 @@
 var guessedLetters = [];
 var wordToGuess = "";
 var isGameRunning = false;
-let words = ['this', 'that', 'another', 'more', 'derek', 'catherine'];
+let words = ['this', 'that', 'another'];
 var wordToGuessLen = 0;
 var wordTemplate;
 
@@ -47,7 +47,7 @@ function Guess() {
   }
   //GAME IS RUNNING
   //add letter
-  let letter = document.getElementById('letter').value.lower;
+  var letter = document.getElementById('letter').value
   AddGuessedLetter(letter);
   //clear letter
   document.getElementById('letter').value = '';
@@ -93,8 +93,11 @@ function replaceAt(str, index, ch) {
 }
 
 function UpdateShadowStringForLetters(pos, letter) {
-	let shadow = document.getElementById('correctLetters').innerText;
+	var shadow = document.getElementById('correctLetters').innerText;
 
+	// var split = shadow.split('');
+	// //each letter is separated by a space
+	// //after the first position (0) we need to skip the spaces
 	for (var i = 0; i < pos.length; i++) {
 		if(i == 0){
 			shadow = replaceAt(shadow,pos[i], letter);
@@ -106,10 +109,10 @@ function UpdateShadowStringForLetters(pos, letter) {
 }
 
 function GetShadowStringForWord(word) {
-  let len = word.length;
-		let template = "_";
-  let templateString = "";
-  for (let i = 0; i < len; i++)
+  var len = word.length;
+  var template = "_";
+  var templateString = "";
+  for (var i = 0; i < len; i++)
   {
     templateString += template;
   }
