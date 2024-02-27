@@ -5,14 +5,16 @@ let words = ['this', 'that', 'another'];
 var wordToGuessLen = 0;
 var wordTemplate;
 
+
+window.onload = (event) => {
+	document.getElementById('letter').focus();
+};
+
 //object.addEventListener("click", myScript);
 //document.getElementById("demo").innerHTML = "Hello World";
 function StartGame() {
   isGameRunning = true;
   GetWordToGuess();
-
-  console.log(wordToGuess);
-  console.log(isGameRunning);
 }
 
 function GetWordToGuess() {
@@ -22,7 +24,6 @@ function GetWordToGuess() {
   document.getElementById('correctLetters').innerText = wordTemplate;
   //set letters in word
 		document.getElementById('lettersInWord').innerText = 'There are ' + wordToGuessLen + ' letters in your word.';
-  console.log(wordToGuessLen);
 }
 
 function AddGuessedLetter(letter) {
@@ -34,10 +35,8 @@ function AddGuessedLetter(letter) {
 
   guessedLetters.push(letter);
 		document.getElementById('GuessedLetters').innerText += letter;
-  // guessedLetters.forEach(function(item, index, array) {
-  // 	console.log(item, index);
-  // }
-  guessedLetters.forEach(item => console.log(item));
+		document.getElementById('letter').focus();
+		//guessedLetters.forEach(item => console.log(item));
 }
 
 function Guess() {
@@ -63,7 +62,7 @@ function Guess() {
 function CheckWin(){
 	let guessedWord = document.getElementById('correctLetters').innerText;
 	if(guessedWord === wordToGuess){
-		alert(`You win!! \n It took you ${guessedLetters.length} guesses.`);
+		alert(`🏆 You win!! 🏆 \n It took you ${guessedLetters.length} guesses.`);
 		Quit();
 	}
 }
